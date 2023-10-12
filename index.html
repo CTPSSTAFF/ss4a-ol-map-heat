@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The Boston Region MPO's Safe Streets and Roads for All Grant Application Map</title>
+		
+        <!-- <link rel="stylesheet" href="libs/jquery-ui-1.10.4/css/cupertino/jquery-ui-1.10.4.custom.min.css"/> -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/cupertino/jquery-ui.min.css" integrity="sha512-ug/p2fTnYRx/TfVgL8ejTWolaq93X+48/FLS9fKf7AiazbxHkSEENdzWkOxbjJO/X1grUPt9ERfBt21iLh2dxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		
+        <link rel="stylesheet" src="libs/openlayers-6.14.1-ol.css" type="text/css">
+		<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css" type="text/css"> -->
+		
+		<!-- CSS for OpenLayers layer switcher add-on control: loaded locally -->
+		<link rel="stylesheet" href="libs/ol-layerswitcher.css" type="text/css">
+		
+		<!-- CSS specific to this app -->
+        <link rel="stylesheet" href="css/ss4a-ol-map.css" type="text/css">  
+        
+        <!-- jQuery library: loaded from a CDN -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		
+		<!-- jQueryUI library -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		
+        <!-- jQueryUI plugin that allows multiple panels of 'accordion' controls to be open simultaneously. -->
+		<!-- Commented out - may not be needed. -->
+        <!-- <script src="libs/jquery-ui.accordion.multiple-master/lib/jquery-ui.accordion.multiple.js"></script> -->
+		
+		<!-- OpenLayers library: loaded locally -->
+        <script src="libs/openlayers-6.14.1-ol.js"></script>
+		<!-- OpenLayers library: loaded from CDN -->
+		<!-- <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script> -->
+		
+		<!-- OpenLayers layer switcher aad-on control: loaded locally -->
+		<script = src="libs/ol-layerswitcher.js"></script>
+		
+		<!-- JS library for Stamen map tiles -->
+		<script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script>
+		
+		<!-- Stuff for Google Analytics -->
+        <script>
+        (function(i,s,o,g,r,a,m){
+            i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+            a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+            a.async=1;
+            a.src=g;
+            m.parentNode.insertBefore(a,m)})(window,
+                                             document,
+                                             "script",
+                                             "https://www.google-analytics.com/analytics.js",
+                                             "ga");
+            ga("create", "UA-39489988-1", {"cookieDomain":"auto"});
+            ga("set", "anonymizeIp", true);
+            ga("send", "pageview");
+        </script>
+    </head>
+    <body>   
+        <div class="ctpsHeader">
+            <div class="lightBlue"></div>
+            <div class="darkBlue"></div>
+            <div id="banner">
+                <a href="https://www.ctps.org/" target="_blank" title="Boston MPO">
+                    <img style="height:59px" src="img/ctps_header.png" title="Opens Boston MPO website in a new window">
+                </a>
+            </div>
+        </div>
+        
+        <h2>The Boston Region MPO's Safe Streets and Roads for All Grant Application Map</h2>
+		
+		<!-- Controls to fiddle with parameters for heatmap layer. -->
+		<div id="heatmap_controls">
+			<span>
+				<label for="radius">radius</label>
+				<input id="radius" type="range" min="1" max="50" step="1" value="8"/>
+				&nbsp;&nbsp;
+				<span id="radius_text" class='heatmap_text'>8</span>
+				&nbsp; &nbsp; &nbsp;
+				<label for="blur">blur</label>
+				<input id="blur" type="range" min="1" max="50" step="1" value="15"/>
+				&nbsp;&nbsp;
+				<span id="blur_text" class='heatmap_text'>15</span>
+			</span>
+		</div>
+        
+        <div id="map_controls">
+            <span>
+                Select basemap:&nbsp;
+                <input type="radio" id="stamen_basemap" name="basemap" class="basemap_radio" value="stamen_basemap" checked>
+                <label for="massgis_basemap">Stamen</label>
+                <input type="radio" id="massgis_basemap" name="basemap" class="basemap_radio" value="massgis_basemap">
+                <label for="massgis_basemap">MassGIS</label>               
+                <input type="radio" id="osm_basemap" name="basemap" class="basemap_radio" value="osm_basemap">
+                <label for="osm_basemap">Open Street Map</label>       
+            </span>
+			<button id="reset_map"><alt='reset map'>Reset map</button>
+			<button id="supporting_doc_button"><img src="img/newwindow-example.gif" alt="link opens new browser window" />Supporting documentation</button>	
+        </div>
+
+		<div id="map" class="map"></div>
+		
+		<!-- All "accordion" elements commentted out - at least for  now. -->
+<!--
+        <div id="accordion0" class="accordion">
+            <h3>Map</h3>
+            <div id="map" class="map"></div>
+		</div>
+		
+		<div id="accordion1" class="accordion">
+            <h3>Accordion Panel #1</h3>
+		</div>
+		<div id="accordion2" class="accordion">
+			<h3>Accordion Panel #2</h3>
+			<div id="output_div_lots"></div>
+        </div>
+-->
+		<div id="popup" class="ol-popup">
+			<a href="#" id="popup-closer" class="ol-popup-closer"></a>
+			<div id="popup-content">
+			</div>
+        </div>
+		
+		<!-- Our app -->
+        <script src="js/ss4a-ol-map.js"></script>  
+        <script> 
+            $(document).ready(function() { initialize(); });
+        </script>
+    </body>
+</html>

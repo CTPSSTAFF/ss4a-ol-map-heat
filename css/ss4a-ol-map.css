@@ -1,0 +1,105 @@
+* {
+	font-family:"Trebuchet MS","sans-serif";
+}
+
+/* Rules for CTPS "branding" */
+#banner{
+	position:relative;
+	height:100%;
+	left:2%;
+	top:-43px;
+	z-index:15;
+	border: none;
+}
+.pagetitle{
+    font-size: 17px;
+}
+.ctpsHeader{
+	height:59px;
+	background-color:white
+}
+.lightBlue{
+	height:27px;
+	width:100%;
+	background-color:#7DA1C4;
+	z-index:10;
+}
+.darkBlue{
+	height:16px;
+	width:100%;
+	background-color:rgb(13,72,127);
+	z-index:10;
+}
+/* End of rules for CTPS "branding" */
+
+#map_controls {
+    margin-bottom: 20px;
+}
+
+/* Rules for OpenLayers map */
+.map {
+    height: 700px;
+    width: 100%;  
+}
+
+/* Rules for OpenLayers map popup */
+.ol-popup {
+        position: absolute;
+        background-color: white;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #cccccc;
+        bottom: 12px;
+        left: -50px;
+        min-width: 280px;
+      }
+      .ol-popup:after, .ol-popup:before {
+        top: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+      .ol-popup:after {
+        border-top-color: white;
+        border-width: 10px;
+        left: 48px;
+        margin-left: -10px;
+      }
+      .ol-popup:before {
+        border-top-color: #cccccc;
+        border-width: 11px;
+        left: 48px;
+        margin-left: -11px;
+      }
+      .ol-popup-closer {
+        text-decoration: none;
+        position: absolute;
+        top: 2px;
+        right: 8px;
+      }
+      .ol-popup-closer:after {
+        content: "✖";
+      }
+
+/* Hide OpenLayers Attribution on map */
+/* .ol-attribution { display: none; } */
+
+/* In case we use jQueryUI, the following overrides jQueryUI ui-widget class size of "1.2em" */
+.ui-widget {
+	font-size: 12px;
+}
+
+/* Styling for <form> for heatmap 'radius' and 'blur' parameters - for use during dev, only. */
+#heatmap_controls {
+	margin-bottom: 15px;
+}
+.heatmap_text {
+	width: 50px;
+	height: 10px;
+}
+
+
