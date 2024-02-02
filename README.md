@@ -41,3 +41,22 @@ The contents this repository are as follows:
 | sld | XML for Styled Layer Descriptors (SLDs) for WMS map layers (not all are currently used) |
 | sql | SQL scripts to create tables in PostGIS |
 
+
+## Running the app 
+The app is entirely self-contained, requiring no backing database to be run.
+As such it can be run on any laptop or desktop \(in addition to a web server\).  
+
+To run the app on a desktop or laptop:
+* Clone the repository into a directory, call it 'x'
+* 'cd x'
+* python -m http.server 8888 --bind localhost
+* In a web browser:
+  * http://localhost:8888
+
+## Colophon
+Author: [Ben Krepp](mailto:bkrepp@ctps.org)  
+Address: Central Transportation Planning Staff, Boston Region Metropolitan Planning Agency  
+10 Park Plaza  
+Suite 2150  
+Boston, MA 02116  
+United States
