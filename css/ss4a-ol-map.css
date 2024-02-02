@@ -85,8 +85,8 @@
         content: "✖";
       }
 
-/* Hide OpenLayers Attribution on map */
-/* .ol-attribution { display: none; } */
+/* Don't display OpenLayers ttribution on map */
+.ol-attribution { display: none; } 
 
 /* In case we use jQueryUI, the following overrides jQueryUI ui-widget class size of "1.2em" */
 .ui-widget {
